@@ -1,0 +1,47 @@
+# behat.yml
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: http://en.wikipedia.org
+      default_session: goutte
+      javascript_session: selenium2
+      goutte: ~
+      selenium2:
+        wd_host: http://localhost:4444/wd/hub
+      #sahi: ~
+      #zombie: ~
+chrome-via-webdriver:
+  extensions:
+    Behat\MinkExtension\Extension:
+      browser_name: chrome
+      selenium2:
+        capabilities: { "browser": "chrome", "version": "*" }
+firefox-via-webdriver:
+  extensions:
+    Behat\MinkExtension\Extension:
+      browser_name: firefox
+      selenium2:
+        capabilities: { "browser": "firefox", "version": "*" }
+phantomjs-via-webdriver:
+  extensions:
+    Behat\MinkExtension\Extension:
+      browser_name: phantomjs
+      selenium2:
+        capabilities: { "browser": "phantomjs", "version": "*" }
+phantomjs-standalone:
+  extensions:
+    Behat\MinkExtension\Extension:
+      browser_name: phantomjs
+      selenium2:
+        browser: phantomjs
+        wd_host: http://localhost:8910/wd/hub
+ci:
+  extensions:
+    Behat\MinkExtension\Extension:
+      browser_name: phantomjs
+      selenium2:
+        capabilities: { "browser": "phantomjs", "version": "*" }
+  formatter:
+    name:  junit
+    parameters:
+      output_path: /tmp/junit
